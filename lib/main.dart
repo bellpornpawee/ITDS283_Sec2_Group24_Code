@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_application_1/%E0%B8%B5upload.dart';
-// import 'splash_screen.dart';
-// import 'login_page.dart';
-// import 'signup.dart';
-// import 'showdata.dart';
-import 'upload.dart';
-import 'chat_with_admin.dart';
-import 'location_page.dart';
+import 'pages/homepage.dart';
+import 'pages/upload.dart';
+import 'pages/detail_page.dart';
+import 'pages/login_page.dart';
+import 'pages/showdata.dart';
+import 'pages/splash_screen.dart';
+import 'pages/signup.dart';
+import 'pages/chatbot.dart';
+import 'pages/location_page.dart'; // เพิ่มหน้า LocationPage
+import 'pages/search.dart';   // เพิ่มหน้า SearchPage ถ้ามี
+
 void main() {
   runApp(const MyApp());
 }
@@ -21,18 +24,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Routing Demo',
       initialRoute: '/',
       routes: {
-        // '/': (context) => const SplashScreen(),
-        // // '/login': (context) => const DatabaseHelper(),
-        // '/signup': (context) => const SignUpPage(),
-        // '/showdata': (context) => const ShowDataPage(),
-        // '/homepage': (context) => const HomePage(),
-          '/': (context) => const UploadPage(),
-        '/upload' :(context) => const UploadPage(),
+        '/': (context) => const SplashScreen(),
+        '/login': (context) => const LoginPage(),
+        '/signup': (context) => const RegisterPage(),
+        '/showdata': (context) => const ShowDataPage(),
+        '/homepage': (context) => const Homepage(),
         '/chat': (context) => const ChatWithAdminPage(),
-        '/location': (context) => const LocationPage(),
+        '/upload': (context) => const UploadPage(),
+        '/search': (context) => const SearchPage(),
         
-
-
       },
     );
   }

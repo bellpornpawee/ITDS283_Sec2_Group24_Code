@@ -110,7 +110,8 @@ class _ChatWithAdminPageState extends State<ChatWithAdminPage> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF3A3DFF), Color(0xFF8A00D4)],
+              colors: [Color(0xFF4A90E2), 
+                  Color(0xFF0F1F3D), ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
