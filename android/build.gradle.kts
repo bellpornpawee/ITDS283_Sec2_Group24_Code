@@ -19,21 +19,3 @@ subprojects {
 tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
-
-android {
-    compileSdkVersion 33 // หรือเวอร์ชันที่คุณใช้
-
-    defaultConfig {
-        // การตั้งค่าปัจจุบันของคุณ
-    }
-
-    // เพิ่ม NDK version ที่นี่
-    ndkVersion = "27.0.12077973"
-
-    // การตั้งค่าอื่นๆ
-    buildTypes {
-        release {
-            // การตั้งค่าการสร้าง release ของคุณ
-        }
-    }
-}
