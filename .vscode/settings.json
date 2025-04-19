@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
     "cmake.sourceDirectory": "/Users/happypuddies/Downloads/hrrrtradyafdyta/flutter_application_1/linux",
+=======
+    "cmake.sourceDirectory": "/Users/happypuddies/ooja/flutter_application_1/linux",
+>>>>>>> 3193fcbd49f81ac21fc63267eb2a790aaf906dd9
     "java.configuration.updateBuildConfiguration": "interactive"
 }
