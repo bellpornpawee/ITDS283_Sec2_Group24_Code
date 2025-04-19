@@ -39,7 +39,7 @@ class DatabaseHelper {
         subtitle TEXT,
         imagePath TEXT,
         date TEXT,
-        username TEXT  -- เพิ่มฟิลด์ username
+        username TEXT
       )
     ''');
   }
@@ -73,21 +73,46 @@ class DatabaseHelper {
     return await db.query(_tableName);
   }
 
-  // ฟังก์ชันค้นหาสินค้าจากฐานข้อมูล
+  Future<Map<String, dynamic>?> getItemById(int id) async {
+    final db = await database;
+    final result = await db.query(
+      _tableName,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+    return result.isNotEmpty ? result.first : null;
+  }
+
   Future<List<Map<String, dynamic>>> searchItems(String query) async {
     final db = await database;
 
     if (query.isEmpty) {
-      return [];  // ถ้าไม่มีคำค้นหาก็คืนค่าลิสต์เปล่า
+      return [];
     }
 
-    // ใช้ LIKE สำหรับการค้นหาผ่านชื่อและ subtitle
-    final result = await db.query(
+    return await db.query(
       _tableName,
       where: 'name LIKE ? OR subtitle LIKE ?',
       whereArgs: ['%$query%', '%$query%'],
     );
+  }
 
-    return result.isEmpty ? [] : result;  // คืนค่าผลลัพธ์หรือคืนค่าลิสต์เปล่า
+  Future<String> _saveImageToFile(File imageFile) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final timestamp = DateTime.now().millisecondsSinceEpoch;
+    final fileName = '$timestamp-${basename(imageFile.path)}';
+    final localImage = await imageFile.copy(join(directory.path, fileName));
+    return localImage.path;
+  }
+
+  Future<int> updateImagePath(int id, File imageFile) async {
+    final imagePath = await _saveImageToFile(imageFile);
+    final db = await database;
+    return await db.update(
+      _tableName,
+      {'imagePath': imagePath},
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 }

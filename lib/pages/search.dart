@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'database_helper.dart';
-import 'location_page.dart';
+import 'database_helper.dart';  // Make sure to import your database helper
+import 'detail_page.dart'; // Import your product detail page
+import 'location_page.dart'; // Import your location filter page
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class _SearchPageState extends State<SearchPage> {
   final TextEditingController _searchController = TextEditingController();
   List<Map<String, dynamic>> _searchResults = [];
 
+  // Function to handle the search logic
   void _searchItems() async {
     final query = _searchController.text.trim();
     if (query.isNotEmpty) {
@@ -50,8 +52,8 @@ class _SearchPageState extends State<SearchPage> {
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color(0xFF4A90E2), 
-                  Color(0xFF0F1F3D), 
+                  Color(0xFF4A90E2),
+                  Color(0xFF0F1F3D),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -69,7 +71,7 @@ class _SearchPageState extends State<SearchPage> {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            // ช่องค้นหา + ปุ่มปักหมุด
+            // Search field and filter button
             Row(
               children: [
                 Expanded(
@@ -90,7 +92,7 @@ class _SearchPageState extends State<SearchPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const LocationPage(),
+                        builder: (context) => const LocationPage(), // เปลี่ยนเป็น LocationPage
                       ),
                     );
                   },
@@ -98,8 +100,7 @@ class _SearchPageState extends State<SearchPage> {
               ],
             ),
             const SizedBox(height: 16),
-
-            // แสดงผลลัพธ์การค้นหา
+            // Results display
             Expanded(
               child: _searchResults.isEmpty
                   ? const Center(child: Text('No results found.'))
@@ -112,6 +113,14 @@ class _SearchPageState extends State<SearchPage> {
                           child: ListTile(
                             title: Text(item['name'] ?? 'No Name'),
                             subtitle: Text(item['subtitle'] ?? 'No Subtitle'),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DetailPage(product: item),
+                                ),
+                              );
+                            },
                           ),
                         );
                       },

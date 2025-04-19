@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'database_helper.dart';
 import 'chat.dart';
 import 'chatbot.dart';
+import 'detail_page.dart';
 
 class LocationPage extends StatefulWidget {
   const LocationPage({super.key});
@@ -170,6 +171,17 @@ class _LocationPageState extends State<LocationPage> {
   }
 }
 
+
+
+
+
+  
+
+
+  
+
+
+
 class LocationDetailPage extends StatefulWidget {
   final List<String> locations;
 
@@ -251,7 +263,7 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ProductDetailPage(product: product),
+                    builder: (context) => DetailPage(product: product), // ✅ ใช้ DetailPage
                   ),
                 );
               },
@@ -267,60 +279,52 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
   }
 }
 
-class ProductDetailPage extends StatelessWidget {
-  final Map<String, dynamic> product;
 
-  const ProductDetailPage({super.key, required this.product});
-
-  void _navigateToChatPage(BuildContext context, Map<String, dynamic> product) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ChatScreen(item: product),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Product Detail', style: TextStyle(color: Colors.white)),
-        iconTheme: const IconThemeData(color: Colors.white),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.chat),
-            onPressed: () => _navigateToChatPage(context, product),
-          ),
-        ],
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFF4A90E2), Color(0xFF0F1F3D)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              product['name'],
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
-            const SizedBox(height: 8),
-            Text('Location: ${product['location']}'),
-            const SizedBox(height: 8),
-            Text('Description: ${product['description']}'),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Product Detail', style: TextStyle(color: Colors.white)),
+//         iconTheme: const IconThemeData(color: Colors.white),
+//         actions: [
+//           IconButton(
+//             icon: const Icon(Icons.chat),
+//             onPressed: () => _navigateToChatPage(context, product),
+//           ),
+//         ],
+//         flexibleSpace: Container(
+//           decoration: const BoxDecoration(
+//             gradient: LinearGradient(
+//               colors: [Color(0xFF4A90E2), Color(0xFF0F1F3D)],
+//               begin: Alignment.topLeft,
+//               end: Alignment.bottomRight,
+//             ),
+//           ),
+//         ),
+//         backgroundColor: Colors.transparent,
+//         elevation: 0,
+//       ),
+//       body: Padding(
+//         padding: const EdgeInsets.all(24.0),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Text(
+//               product['name'],
+//               style: Theme.of(context).textTheme.headlineLarge,
+//             ),
+//             const SizedBox(height: 8),
+//             Text('Location: ${product['location']}'),
+//             const SizedBox(height: 8),
+//             Text('Subtitle: ${product['subtitle']}'),
+//             const SizedBox(height: 16),
+//             ElevatedButton(
+//               onPressed: () => _navigateToChatPage(context, product),
+//               child: const Text('Chat '),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

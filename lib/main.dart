@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'pages/homepage.dart';
-import 'pages/upload.dart';
-import 'pages/detail_page.dart';
+
+
 import 'pages/login_page.dart';
-import 'pages/showdata.dart';
+
 import 'pages/splash_screen.dart';
 import 'pages/signup.dart';
 import 'pages/chatbot.dart';
-import 'pages/location_page.dart'; // เพิ่มหน้า LocationPage
-import 'pages/search.dart';   // เพิ่มหน้า SearchPage ถ้ามี
+ // เพิ่มหน้า LocationPage
+import 'pages/search.dart';
+   // เพิ่มหน้า SearchPage ถ้ามี
 
 void main() {
   runApp(const MyApp());
@@ -27,10 +28,10 @@ class MyApp extends StatelessWidget {
         '/': (context) => const SplashScreen(),
         '/login': (context) => const LoginPage(),
         '/signup': (context) => const RegisterPage(),
-        '/showdata': (context) => const ShowDataPage(),
+        // '/showdata': (context) => const ShowDataPage(),
         '/homepage': (context) => const Homepage(),
         '/chat': (context) => const ChatWithAdminPage(),
-        '/upload': (context) => const UploadPage(),
+        // '/upload': (context) => const ShowDataPage(),
         '/search': (context) => const SearchPage(),
         
       },
