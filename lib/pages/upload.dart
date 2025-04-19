@@ -16,6 +16,7 @@ class _UploadPageState extends State<UploadPage> {
   final _brandController = TextEditingController();
   final _locationController = TextEditingController();
   final _subtitleController = TextEditingController();
+  final _usernameController = TextEditingController(); // เพิ่ม TextEditingController สำหรับ username
   String? imagePath;
 
   void _pickImage() async {
@@ -32,12 +33,14 @@ class _UploadPageState extends State<UploadPage> {
     if (_nameController.text.isNotEmpty &&
         _brandController.text.isNotEmpty &&
         _locationController.text.isNotEmpty &&
-        _subtitleController.text.isNotEmpty) {
+        _subtitleController.text.isNotEmpty &&
+        _usernameController.text.isNotEmpty) { // ตรวจสอบว่า username ไม่ว่าง
       final data = {
         'name': _nameController.text,
         'brand': _brandController.text,
         'location': _locationController.text,
         'subtitle': _subtitleController.text,
+        'username': _usernameController.text, // เพิ่ม username
         'imagePath': imagePath,
         'date': DateTime.now().toString().split(' ')[0],
       };
@@ -116,6 +119,10 @@ class _UploadPageState extends State<UploadPage> {
             TextField(
               controller: _subtitleController,
               decoration: const InputDecoration(labelText: 'Subtitle'),
+            ),
+            TextField(
+              controller: _usernameController, // เพิ่ม TextField สำหรับ username
+              decoration: const InputDecoration(labelText: 'Username'), // เพิ่ม label สำหรับ username
             ),
             const SizedBox(height: 20),
             ElevatedButton(

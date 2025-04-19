@@ -38,7 +38,8 @@ class DatabaseHelper {
         location TEXT,
         subtitle TEXT,
         imagePath TEXT,
-        date TEXT
+        date TEXT,
+        username TEXT  -- เพิ่มฟิลด์ username
       )
     ''');
   }
